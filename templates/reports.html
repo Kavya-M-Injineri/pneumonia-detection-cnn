@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar">
+    <div class="nav-brand">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <span>MedAI Records</span>
+    </div>
+    <div class="nav-user">
+        <a href="/dashboard" class="nav-link"><i class="fa-solid fa-microscope"></i> New Scan</a>
+        <span class="user-role">{{ user.name }} ({{ user.role | title }})</span>
+        <button class="btn-logout" onclick="window.location.href='/logout'">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+    </div>
+</nav>
+
+<main class="dashboard-container">
+    <div class="dashboard-header">
+        <h2>Radiological History Log</h2>
+        <p>Archive of all processed chest X-ray examinations.</p>
+    </div>
+
+    <div class="card result-card">
+        <h3><i class="fa-solid fa-table-list"></i> Patient Reports</h3>
+
+        <div class="table-container">
+            <table class="reports-table">
+                <thead>
+                    <tr>
+                        <th>Scan ID</th>
+                        <th>Date</th>
+                        <th>Radiologist</th>
+                        <th>Diagnosis</th>
+                        <th>Confidence</th>
+                        <th>Pathogen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in reports %}
+                    <tr>
+                        <td class="id-col">{{ report.id }}</td>
+                        <td>{{ report.date }}</td>
+                        <td>{{ report.radiologist }}</td>
+                        <td>
+                            <span
+                                class="status-badge-sm {{ 'pneumonia' if report.diagnosis == 'PNEUMONIA' else 'normal' }}">
+                                {{ report.diagnosis }}
+                            </span>
+                        </td>
+                        <td>{{ report.confidence }}</td>
+                        <td>{{ report.pathogen }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align: center;">No reports found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock %}

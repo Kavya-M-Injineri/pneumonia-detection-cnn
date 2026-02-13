@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="brand-header">
+            <i class="fa-solid fa-heart-pulse brand-icon"></i>
+            <h1>MedAI Classifier</h1>
+            <p id="formSubtitle">Secure Portal for Radiologists</p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" class="login-form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                    <i class="fa-regular fa-user input-icon"></i>
+                    <input type="text" id="username" name="username" placeholder="Enter ID" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Secure Login</button>
+            <p class="login-footer">
+                Don't have an account? <a href="#" id="showSignup" class="toggle-link">Create one</a>
+            </p>
+        </form>
+
+        <!-- SIGNUP FORM (Initially Hidden) -->
+        <form id="signupForm" class="login-form" style="display: none;">
+            <div class="input-group">
+                <label for="signupName">Full Name</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user-doctor input-icon"></i>
+                    <input type="text" id="signupName" name="name" placeholder="Dr. John Doe" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="signupUsername">Username</label>
+                <div class="input-wrapper">
+                    <i class="fa-regular fa-user input-icon"></i>
+                    <input type="text" id="signupUsername" name="username" placeholder="Choose a username" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="signupPassword">Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="signupRole">Role</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-shield-halved input-icon"></i>
+                    <select id="signupRole" name="role" required>
+                        <option value="radiologist">Radiologist</option>
+                        <option value="viewer">Viewer</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Create Account</button>
+            <p class="login-footer">
+                Already have an account? <a href="#" id="showLogin" class="toggle-link">Sign In</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

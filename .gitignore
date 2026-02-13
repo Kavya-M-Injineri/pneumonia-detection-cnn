@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# Data - Exclude large datasets to prevent GitHub rejection
+chest_xray/
+chest_xray_3class/
+data/users.json
+data/reports.json
+
+# Models - We WANT to commit the model (it's small enough, ~26MB)
+# models/*.h5 <-- Commented out to allow pushing
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
